@@ -113,7 +113,11 @@
 @media(max-width:750px){
     
     .navbar .logo-name{
-        font-size: 13px;
+        font-size: 10px;
+    }
+
+    .navbar-search-icon img{
+        margin-left: 3px;
     }
     
     .navbar-menu{
