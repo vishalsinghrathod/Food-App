@@ -112,8 +112,8 @@
 
 @media(max-width:750px){
     
-    .navbar .logo{
-        width: 100px;
+    .navbar .logo-name{
+        font-size: 13px;
     }
     
     .navbar-menu{

@@ -12,7 +12,7 @@ const {getTotalCartAmount} = useContext(StoreContext)
 
   return (
     <div className='navbar'>
-        <Link to='/'><h1><span>V</span>-Kitchen</h1></Link>
+        <Link className='logo-name' to='/'><h1><span>V</span>-Kitchen</h1></Link>
         <ul className="navbar-menu">
             
             <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</Link>
