@@ -6,3 +6,13 @@
 .inner{
   margin-left: 600px;
 }
+
+@media(max-width:750px){
+    .outer{
+        margin-top: 30px;
+    }
+
+    .inner{
+        margin-left: 140px;
+    }
+}
