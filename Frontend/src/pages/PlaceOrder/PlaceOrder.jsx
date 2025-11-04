@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../Context/StoreContext'
+import { Link } from 'react-router-dom';
+
 
 const PlaceOrder = () => {
 
-const {getTotalCartAmount} = useContext(StoreContext)
+  const { getTotalCartAmount } = useContext(StoreContext)
 
   return (
     <form className='place-order'>
@@ -30,22 +32,23 @@ const {getTotalCartAmount} = useContext(StoreContext)
         <div className="cart-total">
           <h2>Cart Totals</h2>
           <div>
-             <div className="cart-total-details">
+            <div className="cart-total-details">
               <p>Subtotal</p>
               <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button>PROCEED TO PAYMENT</button>
+          <Link to="/Success" state={{amount:getTotalCartAmount()===0?0:getTotalCartAmount()+2}} ><button>PROCEED TO PAYMENT</button></Link>
+
         </div>
       </div>
 

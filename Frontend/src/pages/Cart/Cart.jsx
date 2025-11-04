@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './Cart.css'
 import { StoreContext } from '../../Context/StoreContext'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
@@ -51,15 +52,22 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:2}</p>
+              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
+              <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <Link
+            to={getTotalCartAmount() === 0 ? "#" : "/Success"}
+            state={{ amount: getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2 }}
+            className={getTotalCartAmount() === 0 ? "disabled-link" : ""}
+          >
+            <button className="proceed-btn">PROCEED TO CHECKOUT</button>
+          </Link>
+
         </div>
         <div className="cart-promocode">
           <p>If you have a promo code, Enter it here</p>

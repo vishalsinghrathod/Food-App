@@ -102,3 +102,25 @@
         justify-content: start;
     }
 }
+
+.proceed-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.proceed-btn:hover {
+  background-color: #218838;
+}
+
+.disabled-link .proceed-btn {
+  background-color: #ccc;    
+  color: #666;                 
+  cursor: not-allowed;          
+  pointer-events: none;         
+}
