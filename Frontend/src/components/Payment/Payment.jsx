@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "../../Context/StoreContext";
 
 const Payment = ({amount}) => {
+  const { setCartItems } = useContext(StoreContext);
+
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
@@ -20,13 +23,17 @@ const Payment = ({amount}) => {
     }
 
     const options = {
-      key: "rzp_test_1DP5mmOlF5G5ag", 
-      amount: amount * 100, 
-      currency: "USD",
+      // Replace with your own Razorpay Test Key ID from Dashboard (e.g., "rzp_test_xxxx")
+      // The current key is a public overused tutorial key, which might have restricted payment methods.
+      key: "rzp_test_TAaGI9lNVpLgxr", 
+      amount: amount * 83 * 100, // Converting USD to INR because Razorpay UPI/QR/PhonePe only work with INR currency
+      currency: "INR",
       name: "V-Kitchen",
       description: "Secure Payment Gateway",
       handler: function (response) {
         alert("✅ Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        setCartItems({});
+        window.location.href = "/";
       },
       prefill: {
         name: "Vishal Singh",
@@ -35,12 +42,6 @@ const Payment = ({amount}) => {
       },
       theme: {
         color: "#F37254",
-      },
-      method:{
-        upi: true,
-        card: true,
-        netbanking: true,
-        wallet: true
       }
     };
 
@@ -68,7 +69,7 @@ const Payment = ({amount}) => {
         onMouseOver={(e) => (e.target.style.backgroundColor = "#e35a40")}
         onMouseOut={(e) => (e.target.style.backgroundColor = "#F37254")}
       >
-         Pay ${amount}
+         Pay ${amount} (₹{amount * 83})
       </button>
     </div>
   );
